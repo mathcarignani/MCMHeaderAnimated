@@ -52,83 +52,56 @@ extension MCMHeaderAnimated: UIViewControllerAnimatedTransitioning {
         toView.setNeedsLayout()
         toView.layoutIfNeeded()
         
+        let scale = CGAffineTransformMakeScale(0.8, 0.8)
+        let offScreenBottom = CGAffineTransformMakeTranslation(0, container.frame.height)
+
+        // Prepare header
+        let headerTo = (toController as! MCMHeaderAnimatedDelegate).headerView()
+        let headerFrom = (fromController as! MCMHeaderAnimatedDelegate).headerView()
+        
         if self.transitionMode == .Present {
-            
-            let scale = CGAffineTransformMakeScale(0.8, 0.8)
-            let offScreenBottom = CGAffineTransformMakeTranslation(0, container.frame.height)
-            
-            // Prepare header
-            let headerTo = (toController as! MCMHeaderAnimatedDelegate).headerView()
-            let headerFrom = (fromController as! MCMHeaderAnimatedDelegate).headerView()
-            
             self.headerToFrame = headerTo.superview!.convertRect(headerTo.frame, toView: nil)
             self.headerFromFrame = headerFrom.superview!.convertRect(headerFrom.frame, toView: nil)
-            
-            headerFrom.alpha = 0
-            headerTo.alpha = 0
-            let headerIntermediate = (fromController as! MCMHeaderAnimatedDelegate).headerCopy(headerFrom)
-            headerIntermediate.frame = self.headerFromFrame
-            
+        }
+        
+        headerFrom.alpha = 0
+        headerTo.alpha = 0
+        let headerIntermediate = (fromController as! MCMHeaderAnimatedDelegate).headerCopy(headerFrom)
+        headerIntermediate.frame = self.transitionMode == .Present ? self.headerFromFrame : self.headerToFrame
+        
+        if self.transitionMode == .Present {
             // Prepare initial states
             toView.transform = offScreenBottom
             
-            // Add subviews
             container.addSubview(fromView)
             container.addSubview(toView)
             container.addSubview(headerIntermediate)
+        } else {
+            container.addSubview(toView)
+            container.addSubview(fromView)
+            container.addSubview(headerIntermediate)
+        }
+        
+        // Perform de animation
+        UIView.animateWithDuration(duration, delay: 0.0, options: nil, animations: {
             
-            // Perform de animation
-            UIView.animateWithDuration(duration, delay: 0.0, options: nil, animations: {
-                
+            if self.transitionMode == .Present {
                 toView.transform = CGAffineTransformIdentity
                 headerIntermediate.frame = self.headerToFrame
-                
-                }, completion: { finished in
-                    
-                    headerIntermediate.removeFromSuperview()
-                    headerTo.alpha = 1
-                    headerFrom.alpha = 1
-                    
-                    transitionContext.completeTransition(true)
-                    
-            })
-            
-        } else if self.transitionMode == .Dismiss {
-            
-            let scale = CGAffineTransformMakeScale(0.8, 0.8)
-            let offScreenBottom = CGAffineTransformMakeTranslation(0, container.frame.height)
-            
-            // Prepare header
-            let headerTo = (toController as! MCMHeaderAnimatedDelegate).headerView()
-            let headerFrom = (fromController as! MCMHeaderAnimatedDelegate).headerView()
-            
-            headerFrom.alpha = 0
-            headerTo.alpha = 0
-            let headerIntermediate = (fromController as! MCMHeaderAnimatedDelegate).headerCopy(headerFrom)
-            headerIntermediate.frame = self.headerToFrame
-            
-            // Add subviews
-            container.addSubview(toView)
-            container.addSubview(fromView)
-            container.addSubview(headerIntermediate)
-            
-            // Perform de animation
-            UIView.animateWithDuration(duration, delay: 0.0, options: nil, animations: {
-                
+            } else {
                 fromView.transform = offScreenBottom
                 headerIntermediate.frame = self.headerFromFrame
-                
-                }, completion: { finished in
-                    
-                    headerIntermediate.removeFromSuperview()
-                    headerTo.alpha = 1
-                    headerFrom.alpha = 1
-                    
-                    transitionContext.completeTransition(true)
-                    
-            })
+            }
             
-        }
+            }, completion: { finished in
+                
+                headerIntermediate.removeFromSuperview()
+                headerTo.alpha = 1
+                headerFrom.alpha = 1
+                
+                transitionContext.completeTransition(true)
+                
+        })
         
     }
     
