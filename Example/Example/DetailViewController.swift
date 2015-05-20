@@ -29,6 +29,7 @@ class DetailViewController: UIViewController {
     // MARK: - Actions
     @IBAction func close(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
+        (self.transitioningDelegate as! MCMHeaderAnimated).finishInteractiveTransition()
     }
     
 }

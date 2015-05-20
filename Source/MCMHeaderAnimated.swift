@@ -16,15 +16,47 @@ public protocol MCMHeaderAnimatedDelegate {
     
 }
 
-public class MCMHeaderAnimated: NSObject {
+public class MCMHeaderAnimated: UIPercentDrivenInteractiveTransition {
     
     public var transitionMode: TransitionMode = .Present
     
     private var headerFromFrame: CGRect! = nil
     private var headerToFrame: CGRect! = nil
     
+    private var enterPanGesture: UIPanGestureRecognizer!
+    
     public enum TransitionMode: Int {
         case Present, Dismiss
+    }
+    
+    public var destinationViewController: UIViewController! {
+        didSet {
+            self.enterPanGesture = UIPanGestureRecognizer()
+            self.enterPanGesture.addTarget(self, action: "handleOnstagePan:")
+            self.destinationViewController.view.addGestureRecognizer(self.enterPanGesture)
+        }
+    }
+    
+    // TODO: We need to complete this method to do something useful
+    func handleOnstagePan(pan: UIPanGestureRecognizer){
+        
+        let translation = pan.translationInView(pan.view!)
+        let d =  translation.y / CGRectGetHeight(pan.view!.bounds) * 1.5
+        
+        switch (pan.state) {
+            case UIGestureRecognizerState.Began:
+            
+                self.destinationViewController.dismissViewControllerAnimated(true, completion: nil)
+            break
+            case .Changed:
+                
+                self.updateInteractiveTransition(d)
+            break
+            
+            default: // .Ended, .Cancelled, .Failed ...
+                
+                self.finishInteractiveTransition()
+        }
     }
     
 }
@@ -52,7 +84,7 @@ extension MCMHeaderAnimated: UIViewControllerAnimatedTransitioning {
         toView.setNeedsLayout()
         toView.layoutIfNeeded()
         
-        let scale = CGAffineTransformMakeScale(0.8, 0.8)
+        let alpha: CGFloat = 0.7
         let offScreenBottom = CGAffineTransformMakeTranslation(0, container.frame.height)
 
         // Prepare header
@@ -70,13 +102,13 @@ extension MCMHeaderAnimated: UIViewControllerAnimatedTransitioning {
         headerIntermediate.frame = self.transitionMode == .Present ? self.headerFromFrame : self.headerToFrame
         
         if self.transitionMode == .Present {
-            // Prepare initial states
             toView.transform = offScreenBottom
             
             container.addSubview(fromView)
             container.addSubview(toView)
             container.addSubview(headerIntermediate)
         } else {
+            toView.alpha = alpha
             container.addSubview(toView)
             container.addSubview(fromView)
             container.addSubview(headerIntermediate)
@@ -86,10 +118,12 @@ extension MCMHeaderAnimated: UIViewControllerAnimatedTransitioning {
         UIView.animateWithDuration(duration, delay: 0.0, options: nil, animations: {
             
             if self.transitionMode == .Present {
+                fromView.alpha = alpha
                 toView.transform = CGAffineTransformIdentity
                 headerIntermediate.frame = self.headerToFrame
             } else {
                 fromView.transform = offScreenBottom
+                toView.alpha = 1.0
                 headerIntermediate.frame = self.headerFromFrame
             }
             
@@ -107,6 +141,14 @@ extension MCMHeaderAnimated: UIViewControllerAnimatedTransitioning {
     
 }
 
+extension MCMHeaderAnimated: UIViewControllerInteractiveTransitioning {
+    
+    public override func startInteractiveTransition(transitionContext: UIViewControllerContextTransitioning) {
+        super.startInteractiveTransition(transitionContext)
+    }
+
+}
+
 extension MCMHeaderAnimated: UIViewControllerTransitioningDelegate {
 
     public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -121,4 +163,9 @@ extension MCMHeaderAnimated: UIViewControllerTransitioningDelegate {
         return self
         
     }
+    
+    public func interactionControllerForDismissal(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return self
+    }
+    
 }

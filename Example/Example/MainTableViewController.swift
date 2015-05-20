@@ -25,6 +25,7 @@ class MainTableViewController: UITableViewController {
             ["color": UIColor(red: 210/255.0, green: 77/255.0, blue: 87/255.0, alpha: 1.0)],
             ["color": UIColor(red: 236/255.0, green: 236/255.0, blue: 236/255.0, alpha: 1.0)]
         ]
+        
     }
     
     // MARK: - Table view data source
@@ -61,7 +62,9 @@ class MainTableViewController: UITableViewController {
             
             var destination = segue.destinationViewController as! DetailViewController
             destination.element = element as! NSDictionary
-            destination.transitioningDelegate = self
+            destination.transitioningDelegate = self.transitionManager
+            
+            self.transitionManager.destinationViewController = destination
         }
     }
     
@@ -84,19 +87,19 @@ extension MainTableViewController: MCMHeaderAnimatedDelegate {
     
 }
 
-extension MainTableViewController: UIViewControllerTransitioningDelegate {
-    
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        
-        self.transitionManager.transitionMode = .Present
-        return self.transitionManager
-    }
-    
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        
-        self.transitionManager.transitionMode = .Dismiss
-        return self.transitionManager
-        
-    }
-    
-}
+//extension MainTableViewController: UIViewControllerTransitioningDelegate {
+//    
+//    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        
+//        self.transitionManager.transitionMode = .Present
+//        return self.transitionManager
+//    }
+//    
+//    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        
+//        self.transitionManager.transitionMode = .Dismiss
+//        return self.transitionManager
+//        
+//    }
+//    
+//}
