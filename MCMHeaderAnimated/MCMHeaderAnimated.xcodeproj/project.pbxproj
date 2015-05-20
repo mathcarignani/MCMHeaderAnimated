@@ -10,6 +10,7 @@
 		051236421B0C00FD00F95AC6 /* MCMHeaderAnimated.h in Headers */ = {isa = PBXBuildFile; fileRef = 051236411B0C00FD00F95AC6 /* MCMHeaderAnimated.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		051236481B0C00FD00F95AC6 /* MCMHeaderAnimated.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0512363C1B0C00FD00F95AC6 /* MCMHeaderAnimated.framework */; };
 		0512364F1B0C00FD00F95AC6 /* MCMHeaderAnimatedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0512364E1B0C00FD00F95AC6 /* MCMHeaderAnimatedTests.swift */; };
+		051236691B0C06BB00F95AC6 /* MCMHeaderAnimated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051236681B0C06BB00F95AC6 /* MCMHeaderAnimated.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		051236471B0C00FD00F95AC6 /* MCMHeaderAnimatedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MCMHeaderAnimatedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0512364D1B0C00FD00F95AC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0512364E1B0C00FD00F95AC6 /* MCMHeaderAnimatedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCMHeaderAnimatedTests.swift; sourceTree = "<group>"; };
+		051236681B0C06BB00F95AC6 /* MCMHeaderAnimated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MCMHeaderAnimated.swift; path = ../Source/MCMHeaderAnimated.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 		0512365B1B0C019500F95AC6 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				051236681B0C06BB00F95AC6 /* MCMHeaderAnimated.swift */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				051236691B0C06BB00F95AC6 /* MCMHeaderAnimated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
