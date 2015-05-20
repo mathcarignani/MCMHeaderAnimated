@@ -106,3 +106,19 @@ extension MCMHeaderAnimated: UIViewControllerAnimatedTransitioning {
     }
     
 }
+
+extension MCMHeaderAnimated: UIViewControllerTransitioningDelegate {
+
+    public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        self.transitionMode = .Present
+        return self
+    }
+
+    public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        self.transitionMode = .Dismiss
+        return self
+        
+    }
+}
