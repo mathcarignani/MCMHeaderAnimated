@@ -1,17 +1,16 @@
-# MCMHeaderTransition
+# MCMHeaderAnimated
 
-[![CI Status](http://img.shields.io/travis/Mathias Carignani/MCMHeaderAnimated.svg?style=flat)](https://travis-ci.org/Mathias Carignani/MCMHeaderAnimated)
-[![Version](https://img.shields.io/cocoapods/v/MCMHeaderTransition.svg?style=flat)](http://cocoapods.org/pods/MCMHeaderAnimated)
-[![License](https://img.shields.io/cocoapods/l/MCMHeaderTransition.svg?style=flat)](http://cocoapods.org/pods/MCMHeaderAnimated)
-[![Platform](https://img.shields.io/cocoapods/p/MCMHeaderTransition.svg?style=flat)](http://cocoapods.org/pods/MCMHeaderAnimated)
 
 ## Usage
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
 
+iOS 7.0+
+
 ## Installation
+
+### CocoaPods
 
 MCMHeaderAnimated is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
@@ -19,6 +18,20 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod "MCMHeaderAnimated"
 ```
+
+Then, run the following command:
+
+```
+$ pod install
+```
+
+### Manual
+
+If you prefer not to use [CocoaPods](http://cocoapods.org), you can integrate MCMHeaderAnimated into your project manually. Just drag and drop all files in the [__Source__](Source) folder into your project.
+
+## Demo
+
+Build and run the example project in Xcode to see MCMHeaderAnimated in action.
 
 ## Author
 
