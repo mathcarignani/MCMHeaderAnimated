@@ -86,20 +86,3 @@ extension MainTableViewController: MCMHeaderAnimatedDelegate {
     }
     
 }
-
-//extension MainTableViewController: UIViewControllerTransitioningDelegate {
-//    
-//    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        
-//        self.transitionManager.transitionMode = .Present
-//        return self.transitionManager
-//    }
-//    
-//    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        
-//        self.transitionManager.transitionMode = .Dismiss
-//        return self.transitionManager
-//        
-//    }
-//    
-//}
