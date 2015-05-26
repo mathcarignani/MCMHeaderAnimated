@@ -6,7 +6,13 @@
 
 ## Usage
 
-First, create a new instance of ```MCMHeaderAnimated``` in the list controller, like this:
+First, import ```MCMHeaderAnimated```:
+
+```swift
+import MCMHeaderAnimated
+```
+
+Create a new instance of ```MCMHeaderAnimated``` in the list controller, like this:
 
 ```swift
 private let transitionManager = MCMHeaderAnimated()
@@ -38,6 +44,7 @@ MCMHeaderAnimated is available through [CocoaPods](http://cocoapods.org). To ins
 it, simply add the following line to your Podfile:
 
 ```ruby
+use_frameworks!
 pod "MCMHeaderAnimated"
 ```
 
