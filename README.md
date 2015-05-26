@@ -1,18 +1,26 @@
 # MCMHeaderAnimated
 
+```MCMHeaderAnimated``` allows you to add an animation between list and detail views.
+
+*Note: The sample code design was inspired by [Tryolabs Mobile Showcase](http://blog.tryolabs.com/2015/05/12/tryolabs-mobile-showcase-going-full-mobile/) *
 
 ## Usage
 
+First, create a new instance of ```MCMHeaderAnimated``` in the list controller, like this:
 
 ```swift
 private let transitionManager = MCMHeaderAnimated()
 ```
 
+then, assign that to the transitioningDelegate property of the destination controller:
+
 ```swift
 destination.transitioningDelegate = self.transitionManager
 ```
 
-Finally extend MCMHeaderAnimatedDelegate and implement __headerView__ and __headerCopy__ functions in both view controllers.
+and finally extend MCMHeaderAnimatedDelegate and implement __headerView__ and __headerCopy__ functions in both controllers.
+
+If you want to add user interaction to dismiss detail view, like the example, you can add the following line:
 
 ```swift
 self.transitionManager.destinationViewController = destination
