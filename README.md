@@ -6,7 +6,7 @@
 	<img src="demo.gif" alt="Demo MCMHeaderAnimated" width="320px" />
 </p>
 
-*Note: The sample code design was inspired by [Tryolabs Mobile Showcase](http://blog.tryolabs.com/2015/05/12/tryolabs-mobile-showcase-going-full-mobile/) *
+*Note: The sample code design was inspired by [Tryolabs Mobile Showcase](http://blog.tryolabs.com/2015/05/12/tryolabs-mobile-showcase-going-full-mobile/)*
 
 ## Usage
 
