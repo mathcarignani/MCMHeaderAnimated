@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
   s.name             = "MCMHeaderAnimated"
-  s.version          = "1.0.0"
-  s.summary          = "Easy way to header animations."
+  s.version          = "0.0.1"
+  s.summary          = "Easy way to add a nice header animation."
   s.description      = <<-DESC
-                       Easy way to header animations.
+                       MCMHeaderAnimated allows you to add an animation between list and details views.
                        DESC
   s.homepage         = "https://github.com/mathcarignani/MCMHeaderAnimated"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"

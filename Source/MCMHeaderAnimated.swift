@@ -25,11 +25,6 @@ public class MCMHeaderAnimated: UIPercentDrivenInteractiveTransition {
     private var headerToFrame: CGRect! = nil
     
     private var enterPanGesture: UIPanGestureRecognizer!
-    
-    public enum TransitionMode: Int {
-        case Present, Dismiss
-    }
-    
     public var destinationViewController: UIViewController! {
         didSet {
             self.enterPanGesture = UIPanGestureRecognizer()
@@ -37,6 +32,10 @@ public class MCMHeaderAnimated: UIPercentDrivenInteractiveTransition {
             self.destinationViewController.view.addGestureRecognizer(self.enterPanGesture)
             self.transitionInteracted = true
         }
+    }
+    
+    public enum TransitionMode: Int {
+        case Present, Dismiss
     }
     
     func handleOnstagePan(pan: UIPanGestureRecognizer){
