@@ -19,6 +19,7 @@ public protocol MCMHeaderAnimatedDelegate {
 public class MCMHeaderAnimated: UIPercentDrivenInteractiveTransition {
     
     public var transitionMode: TransitionMode = .Present
+    public var transitionInteracted: Bool = false
     
     private var headerFromFrame: CGRect! = nil
     private var headerToFrame: CGRect! = nil
@@ -34,10 +35,10 @@ public class MCMHeaderAnimated: UIPercentDrivenInteractiveTransition {
             self.enterPanGesture = UIPanGestureRecognizer()
             self.enterPanGesture.addTarget(self, action: "handleOnstagePan:")
             self.destinationViewController.view.addGestureRecognizer(self.enterPanGesture)
+            self.transitionInteracted = true
         }
     }
     
-    // TODO: We need to complete this method to do something useful
     func handleOnstagePan(pan: UIPanGestureRecognizer){
         
         let translation = pan.translationInView(pan.view!)
@@ -84,7 +85,7 @@ extension MCMHeaderAnimated: UIViewControllerAnimatedTransitioning {
         toView.setNeedsLayout()
         toView.layoutIfNeeded()
         
-        let alpha: CGFloat = 0.7
+        let alpha: CGFloat = 0.1
         let offScreenBottom = CGAffineTransformMakeTranslation(0, container.frame.height)
 
         // Prepare header
@@ -165,7 +166,7 @@ extension MCMHeaderAnimated: UIViewControllerTransitioningDelegate {
     }
     
     public func interactionControllerForDismissal(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return self
+        return self.transitionInteracted ? self : nil
     }
     
 }

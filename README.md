@@ -4,9 +4,23 @@
 ## Usage
 
 
+```swift
+private let transitionManager = MCMHeaderAnimated()
+```
+
+```swift
+destination.transitioningDelegate = self.transitionManager
+```
+
+Finally extend MCMHeaderAnimatedDelegate and implement __headerView__ and __headerCopy__ functions in both view controllers.
+
+```swift
+self.transitionManager.destinationViewController = destination
+```
+
 ## Requirements
 
-iOS 7.0+
+iOS 8.0+
 
 ## Installation
 

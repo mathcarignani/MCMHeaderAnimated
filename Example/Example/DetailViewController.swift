@@ -26,12 +26,6 @@ class DetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    // MARK: - Actions
-    @IBAction func close(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-        (self.transitioningDelegate as! MCMHeaderAnimated).finishInteractiveTransition()
-    }
-    
 }
 
 extension DetailViewController: MCMHeaderAnimatedDelegate {
