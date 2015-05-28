@@ -66,6 +66,12 @@ If you prefer not to use [CocoaPods](http://cocoapods.org), you can integrate MC
 
 Build and run the example project in Xcode to see MCMHeaderAnimated in action.
 
+Or, run the following command:
+
+``` 
+$ pod try MCMHeaderAnimated 
+```
+
 ## Contributing
 
 1. Fork it ( https://github.com/mathcarignani/MCMHeaderAnimated/fork )
