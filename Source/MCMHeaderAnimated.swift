@@ -25,7 +25,7 @@ public class MCMHeaderAnimated: UIPercentDrivenInteractiveTransition {
     
     private var interactive = false
     
-    private let panGesture = UIPanGestureRecognizer()
+    private lazy var panGesture = UIPanGestureRecognizer()
     
     public var destinationViewController: UIViewController? {
         didSet {
