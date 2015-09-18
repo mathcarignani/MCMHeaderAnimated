@@ -49,8 +49,10 @@ public class MCMHeaderAnimated: UIPercentDrivenInteractiveTransition {
             
             switch (recognizer.state) {
                 case .Began:
-                    interactive = true
-                    destinationViewController.dismissViewControllerAnimated(true, completion: nil)
+                    if let headerView = (destinationViewController.topMostViewController() as? MCMHeaderAnimatedDelegate)?.headerView() {
+                        interactive = true
+                        destinationViewController.dismissViewControllerAnimated(true, completion: nil)
+                    }
                 case .Changed:
                     self.updateInteractiveTransition(delta)
                 default:
