@@ -71,7 +71,7 @@ public class MCMHeaderAnimated: UIPercentDrivenInteractiveTransition {
 // MARK: - UIViewControllerAnimatedTransitioning
 extension MCMHeaderAnimated: UIViewControllerAnimatedTransitioning {
     
-    public func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
+    public func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return 0.65
     }
     
@@ -91,7 +91,7 @@ extension MCMHeaderAnimated: UIViewControllerAnimatedTransitioning {
         toView.layoutIfNeeded()
         
         let alpha: CGFloat = 0.1
-        let offScreenBottom = CGAffineTransformMakeTranslation(0, container.frame.height)
+        let offScreenBottom = CGAffineTransformMakeTranslation(0, container!.frame.height)
         
         let headerTo = (toController as! MCMHeaderAnimatedDelegate).headerView()
         let headerFrom = (fromController as! MCMHeaderAnimatedDelegate).headerView()
@@ -108,17 +108,17 @@ extension MCMHeaderAnimated: UIViewControllerAnimatedTransitioning {
         
         if mode == .Present {
             toView.transform = offScreenBottom
-            container.addSubview(fromView)
-            container.addSubview(toView)
-            container.addSubview(headerIntermediate)
+            container!.addSubview(fromView)
+            container!.addSubview(toView)
+            container!.addSubview(headerIntermediate)
         } else {
             toView.alpha = alpha
-            container.addSubview(toView)
-            container.addSubview(fromView)
-            container.addSubview(headerIntermediate)
+            container!.addSubview(toView)
+            container!.addSubview(fromView)
+            container!.addSubview(headerIntermediate)
         }
         
-        UIView.animateWithDuration(duration, delay: 0.0, options: nil, animations: {
+        UIView.animateWithDuration(duration, delay: 0.0, options: [], animations: {
             if self.mode == .Present {
                 fromView.alpha = alpha
                 toView.transform = CGAffineTransformIdentity
