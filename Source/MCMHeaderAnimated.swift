@@ -8,6 +8,8 @@
 
 import UIKit
 
+public let defaultTransitionDuration: NSTimeInterval = 0.5
+
 public protocol MCMHeaderAnimatedDelegate {
     
     func headerView() -> UIView
@@ -72,7 +74,7 @@ public class MCMHeaderAnimated: UIPercentDrivenInteractiveTransition {
 extension MCMHeaderAnimated: UIViewControllerAnimatedTransitioning {
     
     public func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
-        return 0.65
+        return defaultTransitionDuration
     }
     
     public func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
@@ -118,7 +120,7 @@ extension MCMHeaderAnimated: UIViewControllerAnimatedTransitioning {
             container!.addSubview(headerIntermediate)
         }
         
-        UIView.animateWithDuration(duration, delay: 0.0, options: [], animations: {
+        UIView.animateWithDuration(duration, animations: {
             if self.mode == .Present {
                 fromView.alpha = alpha
                 toView.transform = CGAffineTransformIdentity
@@ -128,7 +130,7 @@ extension MCMHeaderAnimated: UIViewControllerAnimatedTransitioning {
                 toView.alpha = 1.0
                 headerIntermediate.frame = self.headerFromFrame
             }
-        }, completion: { finished in
+        }) { finished in
             headerIntermediate.removeFromSuperview()
             headerTo.alpha = 1
             headerFrom.alpha = 1
@@ -137,7 +139,7 @@ extension MCMHeaderAnimated: UIViewControllerAnimatedTransitioning {
             } else {
                 transitionContext.completeTransition(true)
             }
-        })
+        }
         
     }
     
