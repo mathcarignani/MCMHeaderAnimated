@@ -43,7 +43,7 @@ class MainTableViewController: UITableViewController {
         
         cell.background.layer.cornerRadius = 10;
         cell.background.clipsToBounds = true
-        cell.header.backgroundColor = self.elements.objectAtIndex(indexPath.row).objectForKey("color") as! UIColor
+        cell.header.backgroundColor = self.elements.objectAtIndex(indexPath.row).objectForKey("color") as? UIColor
         
         return cell
     }
@@ -57,10 +57,10 @@ class MainTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "viewDetail" {
-            self.lastSelected = self.tableView.indexPathForSelectedRow()!
-            var element = self.elements.objectAtIndex(self.tableView.indexPathForSelectedRow()!.row)
+            self.lastSelected = self.tableView!.indexPathForSelectedRow!
+            let element = self.elements.objectAtIndex(self.tableView!.indexPathForSelectedRow!.row)
             
-            var destination = segue.destinationViewController as! DetailViewController
+            let destination = segue.destinationViewController as! DetailViewController
             destination.element = element as! NSDictionary
             destination.transitioningDelegate = self.transitionManager
             
@@ -80,8 +80,8 @@ extension MainTableViewController: MCMHeaderAnimatedDelegate {
     
     func headerCopy(subview: UIView) -> UIView {
         let cell = tableView.cellForRowAtIndexPath(self.lastSelected) as! MainTableViewCell
-        var header = UIView(frame: cell.header.frame)
-        header.backgroundColor = self.elements.objectAtIndex(self.lastSelected.row).objectForKey("color") as! UIColor
+        let header = UIView(frame: cell.header.frame)
+        header.backgroundColor = self.elements.objectAtIndex(self.lastSelected.row).objectForKey("color") as? UIColor
         return header
     }
     
