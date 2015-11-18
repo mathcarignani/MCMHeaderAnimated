@@ -221,6 +221,7 @@
 		051236051B0C00BE00F95AC6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Mathias Carignani";
 				TargetAttributes = {
@@ -499,6 +500,7 @@
 				0512362E1B0C00BE00F95AC6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0512362F1B0C00BE00F95AC6 /* Build configuration list for PBXNativeTarget "ExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -507,6 +509,7 @@
 				051236311B0C00BE00F95AC6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
