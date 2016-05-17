@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "MCMHeaderAnimated"
-  s.version          = "0.0.1"
+  s.version          = "0.1.0"
   s.summary          = "Easy way to add a nice header animation."
   s.description      = <<-DESC
                        MCMHeaderAnimated allows you to add an animation between list and details views.

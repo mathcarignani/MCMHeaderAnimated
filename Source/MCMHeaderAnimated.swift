@@ -28,7 +28,7 @@ public class MCMHeaderAnimated: UIPercentDrivenInteractiveTransition {
     public var destinationViewController: UIViewController! {
         didSet {
             self.enterPanGesture = UIPanGestureRecognizer()
-            self.enterPanGesture.addTarget(self, action: "handleOnstagePan:")
+            self.enterPanGesture.addTarget(self, action: #selector(self.handleOnstagePan(_:)))
             self.destinationViewController.view.addGestureRecognizer(self.enterPanGesture)
             self.transitionInteracted = true
         }
