@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol MCMHeaderAnimatedDelegate {
+@objc public protocol MCMHeaderAnimatedDelegate {
     
     func headerView() -> UIView
     
