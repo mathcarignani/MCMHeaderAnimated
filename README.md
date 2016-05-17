@@ -66,6 +66,20 @@ If you prefer not to use [CocoaPods](http://cocoapods.org), you can integrate MC
 
 Build and run the example project in Xcode to see MCMHeaderAnimated in action.
 
+Or, run the following command:
+
+``` 
+$ pod try MCMHeaderAnimated 
+```
+
+## Contributing
+
+1. Fork it ( https://github.com/mathcarignani/MCMHeaderAnimated/fork )
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create a new Pull Request
+
 ## Author
 
 Mathias Carignani, mathcarignani@gmail.com
