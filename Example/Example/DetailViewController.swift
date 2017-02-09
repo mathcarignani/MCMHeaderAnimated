@@ -11,7 +11,7 @@ import MCMHeaderAnimated
 
 class DetailViewController: UIViewController {
     
-    var element: NSDictionary! = nil
+    var color: UIColor! = nil
     
     @IBOutlet weak var header: UIView!
     
@@ -19,7 +19,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        header.backgroundColor = self.element.objectForKey("color") as? UIColor
+        header.backgroundColor = color
     }
     
     override func didReceiveMemoryWarning() {
@@ -35,9 +35,9 @@ extension DetailViewController: MCMHeaderAnimatedDelegate {
         return self.header
     }
     
-    func headerCopy(subview: UIView) -> UIView {
+    func headerCopy(_ subview: UIView) -> UIView {
         let headerN = UIView()
-        headerN.backgroundColor = self.element.objectForKey("color") as? UIColor
+        headerN.backgroundColor = color
         return headerN
     }
     
