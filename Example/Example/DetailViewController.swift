@@ -19,7 +19,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        header.backgroundColor = self.element.objectForKey("color") as? UIColor
+        header.backgroundColor = self.element["color"] as? UIColor
     }
     
     override func didReceiveMemoryWarning() {
@@ -37,7 +37,7 @@ extension DetailViewController: MCMHeaderAnimatedDelegate {
     
     func headerCopy(subview: UIView) -> UIView {
         let headerN = UIView()
-        headerN.backgroundColor = self.element.objectForKey("color") as? UIColor
+        headerN.backgroundColor = self.element["color"] as? UIColor
         return headerN
     }
     
